@@ -1,0 +1,33 @@
+# =========================
+# Backend (Spring Boot)
+# =========================
+taskmanager/target/
+taskmanager/.env
+taskmanager/*.log
+
+# =========================
+# Frontend (React)
+# =========================
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+*.iml
+*.code-workspace
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7/bundles/stomp.umd.min.js"></script>
+</head>
+<body>
+    <h2>WebSocket Live Test</h2>
+    <p>Status: <span id="status">Connecting...</span></p>
+    <h3>Messages received:</h3>
+    <ul id="messages"></ul>
+
+    <script>
+        const socket = new SockJS('http://localhost:8081/ws');
+        const stompClient = new StompJs.Client({
+            webSocketFactory: () => socket,
+            onConnect: () => {
+                document.getElementById('status').innerText = 'Connected';
+
+                stompClient.subscribe('/topic/project/2', (message) => {
+                    const li = document.createElement('li');
+                    li.textContent = new Date().toLocaleTimeString() + ' — ' + message.body;
+                    document.getElementById('messages').prepend(li);
+                });
+            },
+            onDisconnect: () => {
+                document.getElementById('status').innerText = 'Disconnected';
+            }
+        });
+
+        stompClient.activate();
+    </script>
+</body>
+</html>
