@@ -90,7 +90,8 @@ const ProjectDetail = () => {
   }, [id]);
 
   const connectWebSocket = () => {
-    const socket = new SockJS('http://localhost:8081/ws');
+    //const socket = new SockJS('http://localhost:8081/ws');
+    const socket = new SockJS(`${process.env.REACT_APP_API_URL?.replace('/api', '') || 'http://localhost:8081'}/ws`);
     const stompClient = new Client.Client({
       webSocketFactory: () => socket,
       onConnect: () => {
