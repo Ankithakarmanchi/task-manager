@@ -82,12 +82,12 @@ const ProjectDetail = () => {
     return true;
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchProject();
     fetchTasks();
     fetchMembers();
     connectWebSocket();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const connectWebSocket = () => {
