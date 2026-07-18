@@ -82,12 +82,13 @@ const ProjectDetail = () => {
     return true;
   };
 
-  //useEffect(() => {
-    //fetchProject();
-    //fetchTasks();
-    //fetchMembers();
-    //connectWebSocket();
-  //}, [id]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    fetchProject();
+    fetchTasks();
+    fetchMembers();
+    connectWebSocket();
+  }, [id]);
 
   const connectWebSocket = () => {
     //const socket = new SockJS('http://localhost:8081/ws');
